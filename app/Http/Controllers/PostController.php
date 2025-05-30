@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        dd(Post::all());
+        dd('hye');
     }
 
     /**
