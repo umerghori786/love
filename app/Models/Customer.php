@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','due_date','remiander_date','is_completed'];
+    protected $fillable = ['name','email','image'];
 }

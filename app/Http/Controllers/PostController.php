@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
+use DB;
 
 class PostController extends Controller
 {
@@ -15,7 +16,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        dd('hye');
+        $posts = Post::query()
+                       ->select([
+                        DB::raw('DATE(due_date) as due_date'),
+                        //DB::raw('COUNT(IF(is_completed >= 0 , "yes","no")) as RESULT'),
+                        DB::raw('COUNT(CASE WHEN is_completed THEN 1 ELSE NULL END) as completed_count'),
+                        DB::raw('COUNT(CASE WHEN NOT is_completed THEN 1 ELSE NULL END) as incompleted_count'),
+                        DB::raw('COUNT(due_date) as count')
+                       ]) 
+                       ->groupBy('due_date')
+                       ->get();
+        dd($posts->toArray());               
     }
 
     /**
