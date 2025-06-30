@@ -12,11 +12,12 @@ class CustomerFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    {   
+        
         return [
             'name'=>$this->faker->name(),
             'email'=>$this->faker->unique()->safeEmail(),
-            'image'=>$this->faker->image('public/storage/images',640,480, null, false),
+            /*'image'=>$this->faker->image('public/storage/images',640,480, null, false),*/
         ];
     }
 }

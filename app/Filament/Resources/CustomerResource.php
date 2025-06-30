@@ -31,7 +31,9 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')->sortable(),
+                Tables\Columns\TextColumn::make('email')->sortable(),
+                
             ])
             ->filters([
                 //
