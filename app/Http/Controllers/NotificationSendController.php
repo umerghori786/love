@@ -38,7 +38,7 @@ class NotificationSendController extends Controller
         ];
 
         $headers = [
-            'Authorization: key=AAAAeVVwV0A:APA91bGmJ9aM88CvKnExjBY__83Udjyl77nYxHGRf76oEbFZpBtTYOSdQRsG4BXpfsMw9QvZLQwYeutubtPaT8nmMm42BdJ7AUBzWmccnPVfQmVKnoH9a_ukMtFu8ShSLIxeXwUJBKpY',
+            'Authorization: ',
             'Content-Type: application/json',
         ];
 
