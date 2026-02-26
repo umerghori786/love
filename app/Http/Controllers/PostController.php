@@ -26,7 +26,8 @@ class PostController extends Controller
                        ]) 
                        ->groupBy('due_date')
                        ->get();
-        dd($posts->toArray());               
+        dd($posts->toArray());    
+                   
     }
 
     /**
