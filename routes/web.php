@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\NotificationSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,20 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('welcomevue');
+    return view('welcome');
 });
 
 Route::resource('posts',PostController::class);
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/fcm', [NotificationSendController::class, 'index']);
+    Route::post('/store-token', [NotificationSendController::class, 'updateDeviceToken'])->name('store.token');
+    Route::post('/send-web-notification', [NotificationSendController::class, 'sendNotification'])->name('send.web-notification');
+});
 
